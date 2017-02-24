@@ -1,0 +1,64 @@
+<div class="container" style="text-align: center">
+<% if current_user.nil? %>
+	<%= link_to new_user_session_path, class: 'login-button' do %>Sign in<% end %>
+	<br>
+	<%= link_to('Register', new_user_registration_path)  %>
+	<%= link_to('Login', new_user_session_path)  %>
+<% else %>
+	<%= link_to home_index_path, class: 'login-button' do %>Go to App<% end %>
+	<br>
+	<%= link_to('Edit registration', edit_user_registration_path) %>
+  <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<% end %>
+<br>
+
+<h1>Search Alexa Ranking</h1>
+<% if current_user.nil? %>
+	Please Sign In Before using the App
+<% end %>
+<%= form_tag "/home/search_alexa", remote: true do |f| %>
+<%= text_field_tag "website_one"%>
+<%= text_field_tag "website_two"%>
+<%= text_field_tag "website_three"%>
+<%= submit_tag "Search" %>
+<% end %>
+
+
+<% if user_signed_in? %>
+<div id="search_result" style="margin: 0% 25%">
+
+</div>
+
+<div id="alexa_graph" style="width: 540px; height: 400px; margin: 5% 28%">
+
+</div>
+
+<% end %>
+</div>
+<script type="text/javascript">
+   $(function(){
+		 new Highcharts.Chart({
+		 	 chart: {
+				 renderTo: 'alexa_graph'
+			 },
+			 title: {
+				 text: 'Red Panther Ranking Graph'
+			 },
+			 xAxis: {
+				 type: 'datetime'
+			 },
+			 yAxis: {
+				 title:{
+					 text: 'Rank'
+				 }
+			 },
+			 series: [{
+				 name: 'Global Ranking',
+				 pointInterval: <%= 1.day * 1000 %>,
+				 pointStart: <%= 6.days.ago.to_i * 1000 %>,
+				 data: <%= Ranking.all.map { |rank| rank.global_ranking} %>
+			 }]
+		 });
+	 });
+
+</script>

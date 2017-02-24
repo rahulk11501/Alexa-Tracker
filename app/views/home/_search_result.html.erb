@@ -1,0 +1,7 @@
+<br><br><br>
+<% @search_result.each do |company| %>
+  Website: <%= company["website"] %> <br>
+  Global Ranking : <%= company["global_ranking"] %> <br>
+  Country Ranking : <%= company["country_ranking"] %> <br>
+  <hr>
+<% end %>
