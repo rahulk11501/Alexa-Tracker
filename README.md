@@ -1,24 +1,20 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Ruby version
+    Use ruby 2.3.1 if possible
 
 * System dependencies
+    Use rails 5
 
-* Configuration
-
-* Database creation
-
-* Database initialization
+* Database
+    Use Mongoid
 
 * How to run the test suite
+    $ bundle exec rspec spec/controllers/home_controller_spec.rb
 
 * Services (job queues, cache servers, search engines, etc.)
+    'Sucker Punch' used for job and 'whenever' is used for scheduler
 
-* Deployment instructions
+* Highchart Data is created from back-end
 
-* ...
+* Will Provide seed file for the same shortly
