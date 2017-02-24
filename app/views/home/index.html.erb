@@ -17,9 +17,9 @@
 	Please Sign In Before using the App
 <% end %>
 <%= form_tag "/home/search_alexa", remote: true do |f| %>
-<%= text_field_tag "website_one"%>
-<%= text_field_tag "website_two"%>
-<%= text_field_tag "website_three"%>
+<%= text_field_tag "website_one",nil, placeholder: 'Enter website...'%>
+<%= text_field_tag "website_two",nil, placeholder: 'Enter website...'%>
+<%= text_field_tag "website_three",nil, placeholder: 'Enter website...'%>
 <%= submit_tag "Search" %>
 <% end %>
 
@@ -42,7 +42,7 @@
 				 renderTo: 'alexa_graph'
 			 },
 			 title: {
-				 text: 'Red Panther Ranking Graph'
+				 text: 'Red Panthers Ranking Graph'
 			 },
 			 xAxis: {
 				 type: 'datetime'
